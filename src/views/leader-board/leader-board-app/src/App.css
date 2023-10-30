@@ -1,0 +1,264 @@
+body {
+  background-size: 1024px 768px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  font-family: 'weissenhof_groteskregular', Arial, Helvetica, sans-serif;
+  color: #333333;
+}
+body * {
+  box-sizing: border-box;
+}
+p {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+a, a:visited {
+  color: #0E0078;
+}
+
+#root {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+}
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.screen {
+  height: 100%;
+  overflow: hidden;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+@font-face {
+  font-family: 'live_sourceregular';
+  src: url('./assets/fonts/livesource-webfont.woff2') format('woff2'),
+       url('./assets/fonts/livesource-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'weissenhof_groteskbold';
+  src: url('./assets/fonts/weissenhofgrotesk-bold-webfont.woff2') format('woff2'),
+       url('./assets/fonts/weissenhofgrotesk-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'weissenhof_groteskmedium';
+  src: url('./assets/fonts/weissenhofgrotesk-medium-webfont.woff2') format('woff2'),
+       url('./assets/fonts/weissenhofgrotesk-medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'weissenhof_groteskregular';
+  src: url('./assets/fonts/weissenhofgrotesk-regular-webfont.woff2') format('woff2'),
+       url('./assets/fonts/weissenhofgrotesk-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'pin-mediumdot';
+  src: url('./assets/fonts/PIN-MediumDot.woff2') format('woff2'),
+       url('./assets/fonts/PIN-MediumDot.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+}
+#logo {
+  position: absolute;
+  width: 343px;
+  height: 157px;
+  top: 54px;
+  right: 58px;
+  background: transparent url('./assets/img/logo-orgovyx.svg') no-repeat 0 0;
+  background-size: 100%;    
+}
+#header {
+  width: 100%;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+.headerImg {
+  margin-top: 34px;
+  width: 466px;
+  height: auto;
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2500px;
+  height: 2500px;
+  background: transparent url('assets/img/bg-clock.png') no-repeat center center;
+  background-size: 100%;
+  animation-name: rotateClock;
+  animation-duration: 500s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;     
+}
+.topContainer1 {
+  position: absolute;
+  top: -350px;
+  left: -380px;
+  width: 650px;
+  height: 650px;  
+  animation-name: rotateReverse;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; 
+}
+.circleA {
+  position: absolute;
+  right: -50px;
+  bottom: -10px;
+  width: 690px;
+  height: 690px;
+  border: 1px solid #FDBA12;
+  border-radius: 50%;
+}
+.circleB {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  width: 630px;
+  height: 630px;
+  border: 90px solid #9EBEDA;
+  border-radius: 50%;
+}
+
+.topContainer2 {
+  position: absolute;
+  left: -278px;
+  top: -443px;
+  width: 670px;
+  height: 670px;  
+  animation-name: rotate;
+  animation-duration: 40s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;        
+}
+.circleC {
+  position: absolute;
+  right: 0;
+  bottom: 0px;  
+  width: 700px;
+  height: 700px;
+  border: 1px solid #FDBA12;
+  border-radius: 50%;
+
+}
+
+@keyframes rotateClock{
+  0% { transform: translate(-50%, -50%) rotate(0); }
+ 
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes rotate{
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes rotateReverse{
+  0% { transform: rotate(0); }
+  100% { transform: rotate(-360deg); }
+}
+#scrollContainer {
+  width: 1462px;
+  height: 628px;
+  overflow: hidden;
+}
+#scrollContainer table {
+  animation-name: scroll;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;  
+  animation-direction: alternate;
+}
+@keyframes scroll{
+  0% { transform: translateY(0); }
+  2% { transform: translateY(0); }
+  100% { transform: translateY(-600px); }
+}
+table {
+  width: 1462px;
+  position: relative;
+  margin: 0 auto 0;
+  color: #fff;
+  font-family: 'weissenhof_groteskmedium', Arial, Helvetica, sans-serif;
+  padding: 0;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  box-sizing:border-box;
+}
+table tr {
+  background: #0E0078; 
+  border-radius: 50%;
+ }
+table tr:nth-child(odd) {
+  background: #4538A4; 
+}
+table thead tr:first-child {
+  background-color: transparent;
+}
+table tbody tr:first-child {
+  background: #9FB6D4; 
+}
+
+
+table th {
+  font-size: 25px;
+  margin: 0;
+}
+table td,
+table th {
+  width: 20%;
+}
+table td:first-child,
+table th:first-child {
+  width: 40%;
+}
+table td {
+  font-family: 'weissenhof_groteskbold',  'Arial Black', 'Arial Bold', arial;
+  font-size: 34px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 30px 0;
+  margin: 0;
+}
+table td:first-child {
+  text-align: left;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+  padding-left: 113px;
+}
+table th:last-child,
+table td:last-child {
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  padding-right: 80px;
+}

@@ -1,0 +1,64 @@
+{
+	"name": "leader-board",
+	"productName": "Leader Board",
+	"version": "0.0.0",
+	"description": "An app to track top scores",
+	"license": "MIT",
+	"repository": "",
+	"author": {
+		"name": "Aaron Stack",
+		"email": "aaron.stack.barnes@gmail.com",
+		"url": "https://aaronstack.com"
+	},
+	"scripts": {
+		"postinstall": "electron-builder install-app-deps",
+		"lint": "xo",
+		"test": "npm run lint",
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder --macos --windows",
+		"release": "np"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cookie-parser": "^1.4.5",
+		"cors": "^2.8.5",
+		"electron-context-menu": "^3.0.0",
+		"electron-debug": "^3.2.0",
+		"electron-reload": "^2.0.0-alpha.1",
+		"electron-store": "^8.0.0",
+		"electron-unhandled": "^3.0.2",
+		"electron-updater": "^4.3.8",
+		"electron-util": "^0.15.1",
+		"express": "^4.17.1",
+		"request": "^2.88.2",
+		"string-replace-middleware": "^1.0.2"
+	},
+	"devDependencies": {
+		"electron": "^12.0.6",
+		"electron-builder": "^22.10.5",
+		"np": "^7.5.0",
+		"xo": "^0.39.1"
+	},
+	"xo": {
+		"envs": [
+			"node",
+			"browser"
+		]
+	},
+	"np": {
+		"publish": false,
+		"releaseDraft": false
+	},
+	"build": {
+		"appId": "com.area23.LeaderBoard",
+		"mac": {
+			"icon": "./src/assets/icons/area23.icns",
+			"category": "public.app-category.social-networking",
+			"darkModeSupport": true
+		},
+		"win": {
+			"icon": "./src/assets/icons/area23.png"
+		}
+	}
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Leader Board Admin Panel</title>
+		<link rel="stylesheet" href="../styles/index.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Admin Panel</h1>
+			</header>
+			<section id="overview"></section>
+			<button id="createScoreBtn" type="button" class="btn">
+				Add New Score
+			</button>
+			<section id="scores"></section>
+			<footer></footer>
+		</div>
+		<script>
+			"use strict";
+
+			const { ipcRenderer, shell } = require("electron");
+
+			// create add score window button
+			document
+				.getElementById("createScoreBtn")
+				.addEventListener("click", () => {
+					ipcRenderer.send("add-window");
+				});
+
+			document.getElementById("scores").addEventListener("click", (event) => {
+				if (event.target.classList.contains("js-delete-score")) {
+					ipcRenderer.send("delete-score", [
+						{ body: { key: event.target.name } },
+					]);
+				}
+			});
+
+			document.getElementById("overview").addEventListener("click", (event) => {
+				event.preventDefault();
+				if (event.target.classList.contains("js-external-link")) {
+					shell.openExternal(event.target.href);
+				}
+			});
+		</script>
+	</body>
+</html>

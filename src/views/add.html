@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Add Score</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form id="scoreForm">
+        <div class="form-group">
+          <label class="form-label" for="name">First Name</label>
+          <input
+            class="form-input"
+            type="text"
+            name="firstName"
+            placeholder="Last Name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="name">Last Name</label>
+          <input
+            class="form-input"
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="score">Score</label>
+          <input
+            class="form-input"
+            type="number"
+            name="score"
+            placeholder="100"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="score">Time</label>
+          <input
+            class="form-input"
+            type="number"
+            name="time"
+            placeholder="100"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="location">Country</label>
+          <input
+            class="form-input"
+            type="text"
+            name="country"
+            placeholder="Country"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="location">State</label>
+          <input
+            class="form-input"
+            type="text"
+            name="state"
+            placeholder="State"
+          />
+        </div>
+
+        <input class="submit" type="submit" value="Add" />
+      </form>
+    </div>
+    <script>
+      const { ipcRenderer } = require("electron");
+
+      const validator = require("../utilities/validator");
+
+      document.getElementById("scoreForm").addEventListener("submit", (evt) => {
+        evt.preventDefault();
+
+        let errors = false;
+        let results = {};
+        const els = Array.from(evt.target).slice(0, 5);
+
+        els.forEach((formEl) => {
+          let { name, value } = formEl;
+          if (name === "score" || name === "time") {
+            value = parseInt(value); //ew
+          }
+
+          const el = { [name]: value };
+
+          // onlyCheckIncluded allows you to check a single element
+          const errorData = validator({ ...el, onlyCheckIncluded: true })[name];
+
+          if (errorData.hasErrors) {
+            console.warn(errorData.errors);
+            errors = true;
+            formEl.classList.add("error");
+          } else {
+            results = { ...results, ...el };
+          }
+        });
+
+        if (errors) return;
+
+        results.lastModified = +new Date();
+        els.forEach((el) => (el.value = ""));
+
+        ipcRenderer.send("create-score", [{ body: results }]);
+      });
+
+      document.querySelectorAll("input").forEach((item) => {
+        item.addEventListener("click", (event) => {
+          event.target.classList.remove("error");
+        });
+      });
+    </script>
+  </body>
+</html>
