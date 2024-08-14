@@ -1,4 +1,4 @@
-# MYO - HCP Branded Interactive Panel
+# Branded Interactive Panel
 
 This is the code for an executable that starts a node server that serves a quiz and leaderboard as well as an admin panel for managing results.
 
@@ -22,17 +22,6 @@ This is the code for an executable that starts a node server that serves a quiz 
 5. [Examples](#examples)
 
 ## Dev
-
-The following json file will need to be added src/constants/api_keys.json to run in dev.
-
-```javascript
-{
-	"CompuLead": {
-		"eventID": 754, // our event id
-		"token": "semi secret key" // included in compuLead api docs
-	}
-}
-```
 
 Built with [Electron](https://electronjs.org).
 
